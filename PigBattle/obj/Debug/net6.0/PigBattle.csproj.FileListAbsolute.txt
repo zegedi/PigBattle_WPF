@@ -1,0 +1,12 @@
+C:\Users\egedi\source\repos\PigBattle\PigBattle\bin\Debug\net6.0\PigBattle.deps.json
+C:\Users\egedi\source\repos\PigBattle\PigBattle\bin\Debug\net6.0\PigBattle.dll
+C:\Users\egedi\source\repos\PigBattle\PigBattle\bin\Debug\net6.0\ref\PigBattle.dll
+C:\Users\egedi\source\repos\PigBattle\PigBattle\bin\Debug\net6.0\PigBattle.pdb
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.csproj.AssemblyReference.cache
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.AssemblyInfoInputs.cache
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.AssemblyInfo.cs
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.csproj.CoreCompileInputs.cache
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.dll
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\ref\PigBattle.dll
+C:\Users\egedi\source\repos\PigBattle\PigBattle\obj\Debug\net6.0\PigBattle.pdb

@@ -1,0 +1,94 @@
+﻿<Window x:Class="PigBattle.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PigBattle.WPF"
+        mc:Ignorable="d"
+        Title="Harcons Robotmalacok Csatája" Height="600" Width="860" MinHeight="600" MinWidth="860">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Fájl">
+                <MenuItem Header="Új játék" Command="{Binding NewGameCommand}" />
+                <Separator />
+                <MenuItem Header="Játék betöltése" Command="{Binding LoadGameCommand}" />
+                <MenuItem Header="Játék mentése" IsEnabled="{Binding ControlsEnabled}" Command="{Binding SaveGameCommand}" />
+                <Separator />
+                <MenuItem Header="Kilépés" Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="Beállítások">
+                <MenuItem Header="Kicsi pálya (4x4)" IsCheckable="True" IsChecked="{Binding IsTableSizeSmall}" />
+                <MenuItem Header="Közepes pálya (6x6)" IsCheckable="True" IsChecked="{Binding IsTableSizeMedium}" />
+                <MenuItem Header="Nagy pálya (8x8)" IsCheckable="True" IsChecked="{Binding IsTableSizeLarge}" />
+            </MenuItem>
+        </Menu>
+
+        <ItemsControl ItemsSource="{Binding Fields}" Grid.Row="1">
+            <!-- elemek gyűtő vezérlője -->
+            <ItemsControl.ItemsPanel>
+                <!-- megadjuk, mi vegye körül az elemeket -->
+                <ItemsPanelTemplate>
+                    <!-- az elemek egy egységes rácsban fognak elhelyezkedni -->
+                    <UniformGrid Rows="{Binding TableDimension}" Columns="{Binding TableDimension}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="Black" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{Binding Path=Color, UpdateSourceTrigger=PropertyChanged}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="{Binding Text}" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <!-- rácsban való elhelyezkedés (ez csak a stílusban adható meg, mivel közvetlenül nem látszódik a rács a gombnál) -->
+                    <Setter Property="Grid.Row" Value="{Binding X}" />
+                    <Setter Property="Grid.Column" Value="{Binding Y}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBox Name="programInputBox" IsEnabled="{Binding ControlsEnabled}"  Width="670px" Margin="5"/>
+            <Button Name="programInputButton" IsEnabled="{Binding ControlsEnabled}" Content="Program Bevitele" Command="{Binding InputCommand}" CommandParameter="{Binding ElementName=programInputBox,Path=Text}" Width="150px" Margin="5" />
+        </StackPanel>
+
+        <StatusBar Grid.Row="3">
+            <!-- státuszsor a lépésszámhoz és az időhöz -->
+            <StatusBarItem>
+                <TextBlock Name="gameInstructions" Text="{Binding GameInstructions}" />
+            </StatusBarItem>
+            <Separator />
+            <StatusBarItem>
+                <TextBlock Name="roundCount" Text="{Binding GameRoundCount}" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
